@@ -1,1 +1,329 @@
-hello world
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chờ mở rương TikTok</title>
+  <style>
+    :root {
+      --primary-color: #00f2ff;
+      --secondary-color: #0066ff;
+      --background-color: #0a0a1a;
+      --text-color: #e0e0e0;
+      --error-color: #ff4444;
+      --button-color: #25F4EE;
+      --button-text: #000;
+      --info-color: #7a7a8c;
+    }
+    
+    body {
+      background: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      overflow: hidden;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(37, 244, 238, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(254, 44, 85, 0.1) 0%, transparent 50%);
+    }
+    
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      color: var(--primary-color);
+      text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+      margin-bottom: 10px;
+      position: relative;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+      border-radius: 3px;
+    }
+    
+    .user-info {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      color: #c92374;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: var(--info-color);
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      color: #28b92c;
+    }
+    
+    .stat-icon {
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
+    
+    .countdown-display {
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+      margin: 20px 0;
+      letter-spacing: -2px;
+      position: relative;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .status-message {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+    
+    .error-message {
+      color: var(--error-color);
+      font-size: 1.8rem;
+    }
+    
+    .success-message {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      animation: pulse 1.5s infinite;
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      margin: 30px 0;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+      border-radius: 5px;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+    }
+    
+    .claim-btn {
+      background: var(--button-color);
+      color: var(--button-text);
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(37, 244, 238, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+    
+    .claim-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 244, 238, 0.6);
+    }
+    
+    .claim-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .claim-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.3) 45%,
+        rgba(255, 255, 255, 0) 60%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes shine {
+      0% { left: -50%; }
+      100% { left: 150%; }
+    }
+    
+    .tiktok-icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%23000" d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.2A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"/></svg>');
+    }
+    
+    @media (max-width: 600px) {
+      .countdown-display {
+        font-size: 3.5rem;
+      }
+      
+      .status-message {
+        font-size: 1.2rem;
+      }
+      
+      .claim-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+      
+      .stats {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chờ mở rương TikTok</h1>
+    
+    <div class="user-info" id="usernameDisplay"></div>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-icon">️</span>
+        <span id="viewCount">0</span> xu / <span id="peopleCount">0</span> người
+      </div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress"></div>
+    </div>
+    
+    <div class="countdown-display" id="countdown">00.0</div>
+
+    <div class="status-message" id="status">Đợi bùng nổ!!!</div>
+    
+    <button class="claim-btn" id="claimBtn">
+      <span class="tiktok-icon"></span>
+      MỞ LIVE
+    </button>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const rawTime = parseInt(params.get("time"));
+  const tiktokUrl = params.get("opentiktok");
+  const username = params.get("username");
+  const viewCount = params.get("view");
+  const peopleCount = params.get("people");
+  
+  const countdownElement = document.getElementById("countdown");
+  const statusElement = document.getElementById("status");
+  const progressElement = document.getElementById("progress");
+  const claimBtn = document.getElementById("claimBtn");
+  const usernameDisplay = document.getElementById("usernameDisplay");
+  const viewCountElement = document.getElementById("viewCount");
+  const peopleCountElement = document.getElementById("peopleCount");
+
+  // Display user info if available
+  if (username) {
+    usernameDisplay.textContent = `@${username}`;
+  }
+  
+  if (viewCount) {
+    viewCountElement.textContent = viewCount;
+  }
+  
+  if (peopleCount) {
+    peopleCountElement.textContent = peopleCount;
+  }
+
+  // Function to get current time in GMT+7 (without relying on the client device time)
+  function getCurrentTimeInGMTPlus7() {
+    const now = new Date();
+    // Get UTC time in milliseconds
+    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60 * 1000);
+    // Add GMT+7 offset (7 hours)
+    const GMTPlus7Time = utcTime + (7 * 60 * 60 * 1000);
+    return GMTPlus7Time;
+  }
+
+  if (isNaN(rawTime)) {
+    countdownElement.textContent = "00.0";
+    statusElement.textContent = "❌ Thiếu tham số time";
+    statusElement.className = "status-message error-message";
+    progressElement.style.width = "0%";
+  } else {
+    const targetTime = rawTime * 1000; // Target time in milliseconds
+    const startTime = getCurrentTimeInGMTPlus7(); // Use GMT+7 time
+    const totalDuration = targetTime - startTime;
+
+    function update() {
+      const now = getCurrentTimeInGMTPlus7(); // Get updated time in GMT+7
+      const diffMs = targetTime - now;
+      const elapsed = now - startTime;
+      const progress = Math.min(100, (elapsed / totalDuration) * 100);
+
+      if (diffMs <= 0) {
+        countdownElement.textContent = "00.0";
+        statusElement.textContent = "🎉 Rương đã mở!";
+        statusElement.className = "status-message success-message";
+        progressElement.style.width = "100%";
+        return;
+      }
+
+      const sec = (diffMs / 1000).toFixed(1);
+      countdownElement.textContent = sec.padStart(4, '0');
+      progressElement.style.width = `${progress}%`;
+
+      requestAnimationFrame(update);
+    }
+
+    claimBtn.addEventListener('click', () => {
+      if (tiktokUrl) {
+        window.open(tiktokUrl, '_blank');
+      } else {
+        alert("Không tìm thấy liên kết TikTok LIVE!");
+      }
+    });
+
+    update();
+  }
+</script>
+
+</body>
+</html>
