@@ -129,33 +129,43 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     
     .delta-btn {
-      padding: 8px 16px;
+      padding: 10px 14px;
       border: none;
-      border-radius: 0;
+      border-radius: 6px;
       background: var(--surface-color);
       color: var(--text-primary);
       cursor: pointer;
-      font-size: 0.875rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
       transition: all 0.2s ease;
-      min-width: 60px;
+      min-width: 65px;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
     
     .delta-btn:hover {
       background: var(--surface-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .delta-btn:active {
+      transform: translateY(0);
     }
     
     .delta-text {
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0 16px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 8px;
       color: var(--text-primary);
-      min-width: 80px;
+      min-width: 85px;
+      text-align: center;
+      flex-shrink: 0;
     }
     
     .config-btn {
@@ -184,154 +194,6 @@
       color: var(--background-primary);
     }
 
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal-content {
-      background: var(--background-secondary);
-      border: none;
-      padding: 32px;
-      border-radius: 0;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: var(--shadow-xl);
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-    }
-
-    .modal-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      color: var(--text-primary);
-      text-align: center;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 0;
-      border: none;
-      background: var(--surface-color);
-      color: var(--text-primary);
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
-
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--text-primary);
-      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .modal-btn {
-      flex: 1;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 0;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-    }
-
-    .modal-btn-submit {
-      background: var(--text-primary);
-      color: var(--background-primary);
-      border: none;
-    }
-
-    .modal-btn-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
-      background: var(--background-primary);
-      color: var(--text-primary);
-    }
-
-    .modal-btn-cancel {
-      background: var(--surface-color);
-      border: none;
-      color: var(--text-secondary);
-    }
-
-    .modal-btn-cancel:hover {
-      background: var(--surface-hover);
-      color: var(--text-primary);
-    }
-
-    .color-display {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      max-width: 320px;
-      background: var(--background-secondary);
-      border: none;
-      backdrop-filter: blur(20px);
-      padding: 16px;
-      border-radius: 0;
-      box-shadow: var(--shadow-lg);
-      z-index: 100;
-    }
-
-    .color-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 8px 0;
-      font-size: 0.875rem;
-      color: var(--text-primary);
-      padding: 8px;
-      background: var(--surface-color);
-      border-radius: 0;
-    }
-
-    .color-box button {
-      padding: 6px 12px;
-      font-size: 0.75rem;
-      border: none;
-      background: var(--background-primary);
-      color: var(--text-primary);
-      border-radius: 0;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .color-box button:hover {
-      background: var(--text-primary);
-      color: var(--background-primary);
-      transform: translateY(-1px);
-    }
     
     @keyframes pulse {
       0% { transform: scale(1); opacity: 1; }
@@ -341,18 +203,83 @@
     
     @media (max-width: 768px) {
       .container {
-        padding: 24px;
-        margin: 16px;
+        padding: 20px;
+        margin: 12px;
       }
       
       .countdown-display {
-        font-size: 4.5rem;
+        font-size: 4rem;
         font-weight: 900;
       }
       
       .stats {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+      }
+      
+      .delta-controls {
+        padding: 12px 8px;
+        gap: 6px;
+      }
+      
+      .delta-btn {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        min-width: 55px;
+      }
+      
+      .delta-text {
+        font-size: 1rem;
+        min-width: 75px;
+        margin: 0 4px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .container {
+        padding: 16px;
+        margin: 8px;
+      }
+      
+      .countdown-display {
+        font-size: 3.2rem;
+        margin: 20px 0;
+      }
+      
+      .delta-controls {
+        padding: 10px 4px;
+        gap: 4px;
+        justify-content: space-between;
+      }
+      
+      .delta-btn {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        min-width: 45px;
+      }
+      
+      .delta-text {
+        font-size: 0.9rem;
+        min-width: 65px;
+        margin: 0 2px;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .delta-controls {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .delta-controls > div:first-child {
+        display: flex;
+        gap: 4px;
+        justify-content: center;
+      }
+      
+      .delta-text {
+        order: -1;
+        margin-bottom: 8px;
       }
     }
   </style>
@@ -390,11 +317,6 @@
     </div>
     
     <div class="notes-container">
-      <button class="config-btn" id="btn-open">
-        <i class="fas fa-palette"></i>
-        <span>Đổi màu nền</span>
-      </button>
-      
       <button class="config-btn setting-btn" id="btn-setting" onclick="openBotSetting()" style="display: none;">
         <i class="fas fa-cog"></i>
         <span>Cài đặt Bot</span>
@@ -402,48 +324,6 @@
     </div>
   </div>
 
-  <!-- Modal for color configuration -->
-  <div class="modal" id="modal" style="display: none;">
-    <div class="modal-content">
-      <div class="modal-title">
-        <i class="fas fa-palette"></i>
-        Cấu hình màu nền theo thời gian
-      </div>
-      <div class="form-group">
-        <label for="start_seconds">
-          <i class="fas fa-play"></i>
-          Thời gian bắt đầu (giây):
-        </label>
-        <input type="number" id="start_seconds" step="0.1" min="0" placeholder="Ví dụ: 10.5">
-      </div>
-      <div class="form-group">
-        <label for="end_seconds">
-          <i class="fas fa-stop"></i>
-          Thời gian kết thúc (giây):
-        </label>
-        <input type="number" id="end_seconds" step="0.1" min="0" placeholder="Ví dụ: 5.0">
-      </div>
-      <div class="form-group">
-        <label for="hex_background_color">
-          <i class="fas fa-fill-drip"></i>
-          Màu nền:
-        </label>
-        <input type="color" id="hex_background_color" value="#ff0050">
-      </div>
-      <div class="modal-actions">
-        <button class="modal-btn modal-btn-cancel" id="btn-cancel">
-          <i class="fas fa-times"></i>
-          Hủy
-        </button>
-        <button class="modal-btn modal-btn-submit" id="btn-submit">
-          <i class="fas fa-save"></i>
-          Lưu cấu hình
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div id="color-display" style="display: none;"></div>
 
 <script>
   // Parse URL parameters
@@ -541,34 +421,6 @@
     } catch {}
   }
 
-  // Color times functions
-  function getColorTimes() {
-    try {
-      return JSON.parse(localStorage.getItem("color_times") || "[]") || [];
-    } catch {
-      return [];
-    }
-  }
-  
-  function addColorTime(input) {
-    try {
-      const colorTimes = getColorTimes();
-      colorTimes.push(input);
-      localStorage.setItem("color_times", JSON.stringify(colorTimes));
-    } catch {}
-  }
-  
-  function deleteColorTime(id) {
-    try {
-      const colorTimes = getColorTimes();
-      const newColorTimes = colorTimes.filter(
-        (item) => `${item?.id || ""}` !== `${id || ""}`
-      );
-      localStorage.setItem("color_times", JSON.stringify(newColorTimes));
-    } catch {}
-  }
-
-  let globalColorTimes = getColorTimes();
   let delta = getDeltaTime();
   
   function updateDeltaDisplay() {
@@ -609,120 +461,15 @@
       const sec = Math.max(0, diffMs / 1000).toFixed(1);
       countdownElement.textContent = sec.padStart(4, '0');
 
-      // Apply color if configured
-      try {
-        const match = globalColorTimes.find(
-          (ct) => ct.end_seconds <= sec && sec <= ct.start_seconds
-        );
-        const color = match?.hex_background_color || "var(--background-color)";
-        if (document.body.style.backgroundColor !== color) {
-          document.body.style.backgroundColor = color;
-        }
-      } catch {}
-
       requestAnimationFrame(update);
     }
 
     update();
   }
 
-  // Display color config
-  function displayColors() {
-    try {
-      globalColorTimes = getColorTimes();
-      const container = document.getElementById("color-display");
-      container.innerHTML = "";
-
-      if (globalColorTimes.length) {
-        container.style.display = "block";
-      } else {
-        container.style.display = "none";
-      }
-
-      globalColorTimes.forEach((item) => {
-        const div = document.createElement("div");
-        div.classList.add("color-box");
-        div.innerHTML = `
-          <button onclick="deleteItem('${item.id}')">Xóa</button>
-          <span><b>${item.start_seconds}s</b> → <b>${item.end_seconds}s</b> → </span>
-          <div style="height: 30px; width: 30px; background-color: ${item.hex_background_color}; border-radius: 50%; border: 2px solid gray;"></div>
-        `;
-        container.appendChild(div);
-      });
-    } catch {}
-  }
-
-  function deleteItem(id) {
-    if (window.confirm("Bạn có chắc chắn muốn xóa không?")) {
-      deleteColorTime(id);
-      displayColors();
-    }
-  }
-
-  function submitData() {
-    let start_seconds = document.getElementById("start_seconds").value.trim();
-    let end_seconds = document.getElementById("end_seconds").value.trim();
-    const hex_background_color = document.getElementById("hex_background_color").value.trim();
-
-    if (!start_seconds) {
-      document.getElementById("start_seconds").focus();
-      document.getElementById("start_seconds").style.borderColor = "var(--error-color)";
-      return;
-    }
-    if (!end_seconds) {
-      document.getElementById("end_seconds").focus();
-      document.getElementById("end_seconds").style.borderColor = "var(--error-color)";
-      return;
-    }
-    if (!hex_background_color) {
-      document.getElementById("hex_background_color").focus();
-      return;
-    }
-
-    start_seconds = parseFloat(start_seconds);
-    end_seconds = parseFloat(end_seconds);
-
-    if (isNaN(start_seconds) || start_seconds < 0) {
-      document.getElementById("start_seconds").focus();
-      document.getElementById("start_seconds").style.borderColor = "var(--error-color)";
-      return;
-    }
-    if (isNaN(end_seconds) || end_seconds < 0) {
-      document.getElementById("end_seconds").focus();
-      document.getElementById("end_seconds").style.borderColor = "var(--error-color)";
-      return;
-    }
-
-    document.getElementById("modal").style.display = "none";
-
-    addColorTime({
-      id: `${Date.now()}${Math.round(Math.random() * 1000)}`,
-      start_seconds: Math.max(start_seconds, end_seconds),
-      end_seconds: Math.min(start_seconds, end_seconds),
-      hex_background_color,
-    });
-
-    document.getElementById("start_seconds").value = "";
-    document.getElementById("end_seconds").value = "";
-    document.getElementById("hex_background_color").value = "#ff0050";
-
-    displayColors();
-  }
 
   // Event listeners
   document.addEventListener("DOMContentLoaded", function () {
-    displayColors();
-
-    document.getElementById("btn-open").addEventListener("click", function () {
-      document.getElementById("modal").style.display = "flex";
-    });
-
-    document.getElementById("btn-submit").addEventListener("click", submitData);
-
-    document.getElementById("btn-cancel").addEventListener("click", function () {
-      document.getElementById("modal").style.display = "none";
-    });
-
     document.getElementById("btn-increase-0.1").addEventListener("click", () => {
       delta += 100;
       updateDeltaDisplay();
@@ -731,6 +478,12 @@
 
     document.getElementById("btn-increase-0.5").addEventListener("click", () => {
       delta += 500;
+      updateDeltaDisplay();
+      setDeltaTime(delta);
+    });
+
+    document.getElementById("btn-increase-1").addEventListener("click", () => {
+      delta += 1000;
       updateDeltaDisplay();
       setDeltaTime(delta);
     });
@@ -747,13 +500,10 @@
       setDeltaTime(delta);
     });
 
-    // Reset border colors when user starts typing
-    document.getElementById("start_seconds").addEventListener("input", function() {
-      this.style.borderColor = "var(--border-color)";
-    });
-    
-    document.getElementById("end_seconds").addEventListener("input", function() {
-      this.style.borderColor = "var(--border-color)";
+    document.getElementById("btn-decrease-1").addEventListener("click", () => {
+      delta -= 1000;
+      updateDeltaDisplay();
+      setDeltaTime(delta);
     });
   });
 </script>
